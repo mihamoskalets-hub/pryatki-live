@@ -1,0 +1,8 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Прятки — события</title>
+<style>body{margin:0;background:#0E0C1A;color:#F4F0FF;font:16px/1.5 system-ui,sans-serif;padding:24px}main{max-width:640px;margin:auto}
+.e{background:#201C38;border-radius:16px;padding:16px;margin:12px 0}.e b{font-size:20px}.d{color:#A49CC8}</style></head>
+<body><main><h1>Прятки — события</h1><p class="d">Отсюда игра берёт сезонные режимы, бойцов, вещи, музыку и фоны.</p><div id="l"></div></main>
+<script>fetch('live.json?t='+Date.now()).then(r=>r.json()).then(p=>{var n=new Date().toISOString().slice(0,10);
+document.getElementById('l').innerHTML=(p.events||[]).filter(e=>!e.off&&(!e.end||e.end>=n)).map(e=>'<div class="e"><b>'+(e.icon||'')+' '+String(e.name||'').replace(/</g,'&lt;')+'</b><div class="d">'+(e.start||'')+' — '+(e.end||'')+'</div></div>').join('')||'<p class="d">Сейчас событий нет.</p>'})</script>
+</body></html>
